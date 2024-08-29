@@ -2,18 +2,17 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
 import { User } from './user.entity';
-import { createAdmin } from './create-admin';
+// import { createAdmin } from './create-admin'; // need to create admin
 import { Role } from 'src/enums/role';
-// import { Role } from 'src/enums/role';
 
 @Injectable()
 export class UsersService {
   constructor(
-    private dataSource: DataSource,
+    // private dataSource: DataSource,  // need to create admin
     @InjectRepository(User)
     private usersRepository: Repository<User>,
   ) {
-    // createAdmin(this.dataSource, this.usersRepository);
+    // createAdmin(this.dataSource, this.usersRepository);  // need to create admin
   }
 
   async findAll(): Promise<User[]> {
