@@ -1,6 +1,7 @@
 import { Client } from 'src/client/client.entity';
 import { Company } from 'src/company/company.entity';
 import { Employee } from 'src/employee/employee.entity';
+import { Office } from 'src/office/office.entity';
 import {
   Entity,
   Column,
@@ -29,7 +30,7 @@ export class Package {
   @JoinColumn()
   recipient: Client;
 
-  @Column()
+  @Column({ nullable: true })
   address: string;
 
   @Column()
@@ -43,6 +44,14 @@ export class Package {
 
   @Column()
   receivedDate: Date;
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  @ManyToOne((type) => Office, (office) => office.id, {
+    eager: true,
+    nullable: true,
+  })
+  @JoinColumn()
+  office: Office;
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   @ManyToOne((type) => Employee, (employee) => employee.id, { eager: true })
