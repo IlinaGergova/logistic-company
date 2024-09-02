@@ -2,5 +2,10 @@ export enum Role {
   Admin,
   Client,
   Courier,
-  Officeworker,
+  Employee,
+}
+
+export enum Position {
+  OfficeWorker,
+  Courier,
 }

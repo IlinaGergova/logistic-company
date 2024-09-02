@@ -32,11 +32,11 @@ export class CompanyService {
     address: string,
     contact: string,
   ): Promise<void> {
-    const school = await this.companyRepository.findOneById(id);
-    school.name = name;
-    school.address = address;
-    school.contact = contact;
-    await this.companyRepository.save(school);
+    const company = await this.companyRepository.findOneById(id);
+    company.name = name;
+    company.address = address;
+    company.contact = contact;
+    await this.companyRepository.save(company);
   }
 
   async create(
@@ -45,15 +45,15 @@ export class CompanyService {
     contact: string,
     dataSource: DataSource,
   ): Promise<void> {
-    const schoolLike = {
+    const companyLike = {
       name: name,
       address: address,
       contact: contact,
     };
-    const school = this.companyRepository.create(schoolLike);
+    const company = this.companyRepository.create(companyLike);
 
     await dataSource.transaction(async (manager) => {
-      await manager.save(school);
+      await manager.save(company);
     });
   }
 }

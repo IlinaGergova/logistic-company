@@ -13,7 +13,7 @@ export class OfficeController {
   @UseGuards(JwtAuthGuard)
   @Get('offices')
   async getOffices(@Request() req) {
-    return this.officeService.findByCompanyId(req.query.school);
+    return this.officeService.findByCompanyId(req.query.company);
   }
 
   @Get('office')
@@ -25,7 +25,7 @@ export class OfficeController {
   @Post('create-office')
   async createOffice(@Request() req) {
     return this.officeService.create(
-      req.body.schoolId,
+      req.body.companyId,
       req.body.name,
       req.body.address,
       req.body.contact,

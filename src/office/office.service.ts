@@ -23,6 +23,9 @@ export class OfficeService {
   }
 
   findOne(id: number): Promise<Office | null> {
+    if (!id) {
+      return null;
+    }
     return this.officeRepository.findOneBy({ id: id });
   }
 
