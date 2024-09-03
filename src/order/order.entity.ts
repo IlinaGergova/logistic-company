@@ -11,7 +11,7 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class Package {
+export class Order {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -36,13 +36,13 @@ export class Package {
   @Column()
   weight: number;
 
-  @Column()
+  @Column('decimal', { precision: 6, scale: 2 })
   price: number;
 
   @Column()
   sentDate: Date;
 
-  @Column()
+  @Column({ default: null })
   receivedDate: Date;
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

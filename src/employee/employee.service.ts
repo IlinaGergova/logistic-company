@@ -31,10 +31,13 @@ export class EmployeeService {
     });
   }
 
-  findByPosition(position: Position): Promise<Employee[]> {
-    return this.employeeRepository.find({
-      where: { position: position },
-    });
+  findByPosition(companyId: number, position: Position): Promise<Employee[]> {
+    return this.employeeRepository
+      .createQueryBuilder('employee')
+      .where(
+        `employee.companyId = "${companyId}" AND employee.position = "${position}"`,
+      )
+      .getMany();
   }
 
   findByOffice(officeId: number): Promise<Employee[]> {

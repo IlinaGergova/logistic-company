@@ -18,7 +18,10 @@ export class EmployeeController {
 
   @Get('employees-by-position')
   async getEmployeesByPosition(@Request() req) {
-    return this.employeeService.findByPosition(req.query.position);
+    return this.employeeService.findByPosition(
+      req.query.companyId,
+      req.query.position,
+    );
   }
 
   @Get('employees-by-office')

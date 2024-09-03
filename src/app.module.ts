@@ -10,10 +10,10 @@ import { CompanyModule } from './company/company.module';
 import { Employee } from './employee/employee.entity';
 import { EmployeeModule } from './employee/employee.module';
 import { OfficeModule } from './office/office.module';
-import { PackageModule } from './package/package.module';
+import { OrderModule } from './order/order.module';
 import { Client } from './client/client.entity';
 import { Company } from './company/company.entity';
-import { Package } from './package/package.entity';
+import { Order } from './order/order.entity';
 import { Office } from './office/office.entity';
 import { AuthModule } from './auth/auth.module';
 
@@ -27,7 +27,7 @@ import { AuthModule } from './auth/auth.module';
       password: 'root',
       database: 'logistic_company',
       logging: 'all',
-      entities: [User, Client, Company, Employee, Office, Package],
+      entities: [User, Client, Company, Employee, Office, Order],
       synchronize: true,
       autoLoadEntities: true,
     }),
@@ -36,7 +36,7 @@ import { AuthModule } from './auth/auth.module';
     CompanyModule,
     EmployeeModule,
     OfficeModule,
-    PackageModule,
+    OrderModule,
     AuthModule,
   ],
   controllers: [AppController],
