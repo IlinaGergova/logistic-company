@@ -31,6 +31,15 @@ export class OrderController {
     return this.orderService.findOne(req.query.id);
   }
 
+  @Get('orders-for-period')
+  async getIncome(@Request() req) {
+    return this.orderService.findAllForPeriod(
+      req.query.companyId,
+      req.query.fromDate,
+      req.query.toDate,
+    );
+  }
+
   @UseGuards(JwtAuthGuard)
   @Post('create-order')
   async createOrder(@Request() req) {

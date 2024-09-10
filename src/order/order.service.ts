@@ -40,6 +40,19 @@ export class OrderService {
     });
   }
 
+  findAllForPeriod(
+    companyId: number,
+    from: string,
+    to: string,
+  ): Promise<Order[]> {
+    return this.orderRepository
+      .createQueryBuilder('order')
+      .where(
+        `order.companyId = "${companyId}" AND order.receivedDate between "${from}" and "${to}"`,
+      )
+      .getMany();
+  }
+
   findOne(id: number): Promise<Order | null> {
     return this.orderRepository.findOneBy({ id: id });
   }
