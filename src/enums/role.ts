@@ -1,7 +1,6 @@
 export enum Role {
   Admin,
   Client,
-  Courier,
   Employee,
 }
 
